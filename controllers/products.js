@@ -24,18 +24,31 @@ if(select){
     apiData=apiData.select(selectFix)
 }
 
-let page=Number(req.query.page) || 1;
-let limit=Number(req.query.limit) || 3;
-let skip=(page-1)*limit;
+// let page=Number(req.query.page) || 1;
+// let limit=Number(req.query.limit) || 3;
+// let skip=(page-1)*limit;
 
-apiData=apiData.skip(skip).limit(limit)
+apiData=apiData//.skip(skip).limit(limit)
 
 
-    const products=await apiData.sort(sort)
-resp.status(200).json({products,nbHits:products.length})
+    const products=await apiData//.sort(sort)
+resp.status(200).json(products)
 };
 const getAllProductsTesting=async(req,resp)=>{
     resp.status(200).json({msg:"i am get all getAllProductsTesting"})
     };
 
-module.exports={getAllProducts,getAllProductsTesting};
+
+
+const PostProduct=async(req,resp)=>{
+    resp.status(200).json({msg:"save all data"})
+}
+const DleatProduct=async(req,resp)=>{
+    resp.status(200).json({msg:"dleat data"})
+}
+const UpdateProduct=async (req,resp)=>{
+    resp.status(200).json({msg:"update successfull"})
+}
+
+
+module.exports={getAllProducts,getAllProductsTesting,PostProduct,DleatProduct,UpdateProduct};
